@@ -2,7 +2,7 @@ const express = require("express");
 
 const cors = require("cors");
 require("dotenv").config();
-const connectDB = require("./db"); // exporting db.js
+const connectDB = require("./db"); 
 
 const app = express();
 
