@@ -1,8 +1,8 @@
 const express = require("express");
-
 const cors = require("cors");
 require("dotenv").config();
-const connectDB = require("./db"); 
+const connectDB = require("./models/db"); 
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -19,7 +19,7 @@ let users=[];
 
 // test route
 app.get("/", (req, res) => {
-  res.send("TypeLess backend is running 🚀");
+  res.status(200).json({message: "Typeless backend is running" }); // to test get method -> successful ~
 });
 //add user data
 app.post("/api/users",(req,res) => 
@@ -39,6 +39,10 @@ app.delete("/api/users",(req,res) =>
   users =[];
   res.json({message :"all users deleted!"});
 });
+
+// auth routes
+app.use("/api/auth", authRoutes); 
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
