@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "TypeLess is an AI-powered autofill app that learns from your data once — and takes care of the rest. It helps users save time by automatically filling out repetitive online forms, while keeping data secure and private.",
   "main": "server.js",
- "dependencies": {
-    "express": "^5.1.0",
-    "cors": "^2.8.5",
-    "mongoose": "^8.17.2",
+  "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "dotenv": "^17.2.1"
+    "mongoose": "^8.18.0"
   },
   "scripts": {
     "start": "node server.js",
