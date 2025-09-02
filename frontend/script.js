@@ -1,10 +1,8 @@
-
-
 // Handle form submission
 document.getElementById("userForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-  //broser do not refresh my page on submitting
-// object to take dat from form yoyo
+  e.preventDefault(); // ✅ stop page refresh
+
+  // Collect form data
   const user = {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
@@ -12,25 +10,19 @@ document.getElementById("userForm").addEventListener("submit", async function (e
     address: document.getElementById("address").value,
   };
 
-  // we just got data here now 
   // Send data to backend
-  console.log(JSON.stringify(user));
-  await fetch("http://localhost:5000/api/users", {
+  await fetch("http://localhost:5000/api/dashboard/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    //here in body we passed the user object that we created if we just wanted to pass individuals strings then we would have made diff requests ie in body only sending name , tehn roll np oetc etc
     body: JSON.stringify(user),
   });
 
   loadUsers(); // refresh the table
 });
 
-
-
 // Fetch and display users
-//making fn async to use await inside it 
 async function loadUsers() {
-  const res = await fetch("http://localhost:5000/api/users");
+  const res = await fetch("http://localhost:5000/api/dashboard/users");
   const users = await res.json();
 
   const tbody = document.getElementById("userData");
@@ -50,9 +42,12 @@ async function loadUsers() {
 
 // Delete user
 async function deleteUser(id) {
-  await fetch(`http://localhost:5000/api/users/${id}`, { method: "DELETE" });
+  await fetch(`http://localhost:5000/api/dashboard/users/${id}`, {
+    method: "DELETE",
+  });
   loadUsers();
 }
 
 // Load users on page load
 window.onload = loadUsers;
+
