@@ -6,6 +6,8 @@ require("dotenv").config();
 
 const connectDB = require("./models/db");   // bring Mongo connection
 const User = require("./models/user");      // bring User model
+const connectDB = require("./models/db"); 
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -19,6 +21,14 @@ connectDB();
 // test route
 app.get("/", (req, res) => {
   res.send("TypeLess backend is running ");
+  res.status(200).json({message: "Typeless backend is running" }); // to test get method -> successful ~
+});
+//add user data
+app.post("/api/users",(req,res) => 
+{
+  const user = req.body;
+  users.push(user);
+  res.status(201).json({ message:"user saved sucessfully!",user});
 });
 
 // add user data (save to Mongo)
@@ -53,6 +63,10 @@ app.delete("/api/users", async (req, res) => {
     res.status(500).json({ message: "Error deleting users" });
   }
 });
+
+// auth routes
+app.use("/api/auth", authRoutes); 
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
