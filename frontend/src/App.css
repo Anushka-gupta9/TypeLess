@@ -1,0 +1,57 @@
+.background {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: -moz-linear-gradient(blue,pink, purple);
+}
+
+.auth {
+  background: white;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 300px ;
+  height: 80vh;
+  
+}
+
+.popup {
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform:  translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.form {
+  margin-top: 40 px;
+  
+}
+.form input {
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.form button{
+
+  background-color: white;
+  font-size: large;
+  cursor: pointer;
+  margin: 100px;
+  border-radius: 10px;
+
+
+}
+
+.form button:hover {
+  background-color: rgb(35, 35, 61);
+}
+
